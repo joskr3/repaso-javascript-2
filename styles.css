@@ -1,3 +1,4 @@
+/* INCIO RESETEO DE ESTILOS  */
 * {
   margin: 0;
   padding: 0;
@@ -51,4 +52,10 @@ svg {
     scroll-behavior: auto !important;
     transition: none;
   }
+}
+/* FIN RESETEO DE ESTILOS  */
+
+
+#imagen{
+  width: 250px;
 }
