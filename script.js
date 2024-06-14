@@ -160,25 +160,166 @@ async function getResponseWithAxios( url ) {
 }
 // Authorization: Client-ID YOUR_ACCESS_KEY
 
-async function getResponse2() {
-  const accesKey = 'CzKkPqjbq5pFQYV9vGcrBVLv7J3ThP7M4DMjIoG4P1U'
-  const secretKey = '305452'
-  const apikey = `${secretKey} ${accesKey}`
-  const response = await fetch(
-    'https://api.unsplash.com/photos/random',
-    {
-      method: 'GET',
-      headers: {
-        Authorization: ` Bearer ${apikey}`
-      }
-    }
-  );
-  if ( !response.ok ) {
-    throw new Error( `HTTP error! status: ${response.status}` );
-  }
-  const data = await response.json();
-  return data
+// async function getResponse2() {
+//   const accesKey = 'CzKkPqjbq5pFQYV9vGcrBVLv7J3ThP7M4DMjIoG4P1U'
+//   const secretKey = '305452'
+//   const apikey = `${secretKey} ${accesKey}`
+//   const response = await fetch(
+//     'https://api.unsplash.com/photos/random',
+//     {
+//       method: 'GET',
+//       headers: {
+//         Authorization: ` Bearer ${apikey}`
+//       }
+//     }
+//   );
+//   if ( !response.ok ) {
+//     throw new Error( `HTTP error! status: ${response.status}` );
+//   }
+//   const data = await response.json();
+//   return data
+// }
+
+
+// getResponse2()
+
+
+// map vs filter y reduce 
+
+let array = [ 1, 2, 3, 4 ]
+
+let nuevoArray = array.map( ( numero ) => {
+  return numero * 2
+} )
+
+console.log( nuevoArray )
+
+
+
+// filter 
+
+
+let miArtistaFav2 = arrayArtistas.filter( ( artista ) => artista.toLocaleLowerCase().includes( 'h' ) )
+
+console.log( miArtistaFav2 )
+
+
+// console.log( listaDeArtistas.children.item(0).textContent )
+
+let elementosLista = Array.from( listaDeArtistas.children )
+
+let hozier = elementosLista.filter( artista => artista.innerHTML === 'Hozier' )
+
+console.log( hozier[ 0 ].textContent )
+
+
+
+let numeros = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
+
+
+let numerosPares = numeros.filter( numero => numero % 2 === 0 )
+
+console.log( numerosPares )
+
+
+let numerosImpares = numeros.filter( numero => numero % 2 !== 0 )
+
+console.log( numerosImpares )
+
+
+let miMejorAmigo = [ 'Beto', 'Maria', 'Ana' ]
+
+let bestFriend = miMejorAmigo.filter( amigo => amigo === 'Beto' )
+
+console.log( bestFriend )
+
+
+let notas = [ {
+  nota: 11,
+  aprobado: true
+}, {
+  nota: 12,
+  aprobado: true
+}, {
+  nota: 7,
+  aprobado: false
 }
+]
+
+let todosAprobados = notas.filter( nota => nota.aprobado !== true )
+
+console.log( todosAprobados[ 0 ].aprobado )
 
 
-getResponse2()
+// reduce 
+
+let numeros2 = [ 10, 20, 30, 40, 50, 60 ]
+
+const total = numeros2.reduce( ( suma, numero ) => suma + numero, 0 )
+
+console.log( total )
+
+
+
+
+let puntajesCompetencia = [
+  {
+    equipo: 'rojo',
+    puntaje: 210
+  },
+  {
+    equipo: 'azul',
+    puntaje: 100
+  },
+  {
+    equipo: 'verde',
+    puntaje: 300
+  }
+]
+
+
+const totalPuntos = puntajesCompetencia.map( ( { puntaje } ) => puntaje )
+
+const totalPuntajes = totalPuntos.reduce( ( total, puntaje ) => total + puntaje, 0 )
+
+console.log( totalPuntajes )
+
+
+
+const elTotal = puntajesCompetencia.map( ( { puntaje } ) => puntaje ).reduce( ( total, puntaje ) => total + puntaje, 0 )
+
+console.log( elTotal )
+
+
+
+const numerosDecimales = [ 0.1, 0.22223, 0.45, -87.21 ]
+
+let numeroMultiplicados = numerosDecimales.reduce( ( total, numero ) => total *= numero, 0 )
+
+console.log( numeroMultiplicados )
+
+
+let temperaturasDeLaSemanaEnCelsius = [ 21, 23, 24, 21, 20, 23, 22 ]
+
+
+let temperaturaPromedio = temperaturasDeLaSemanaEnCelsius.reduce( ( temperaturaFinal, temperatura ) => {
+  temperaturaFinal = ( temperaturaFinal + temperatura )
+  let tempFinal = temperaturaFinal / 7
+  return tempFinal
+}
+  , 0 )
+
+console.log( temperaturaPromedio/7 )
+
+
+let temperaturasDeLaSemanaEnCelsius2 = [ 21, 23, 24, 21, 20, 23, 22 ];
+let temperaturaPromedio2 = temperaturasDeLaSemanaEnCelsius2.reduce( ( temperaturaFinal, temperatura, indice, array ) => {
+  temperaturaFinal += temperatura;
+  if ( indice === array.length - 1 ) {
+    return temperaturaFinal / array.length; // Dividir solo en el último elemento
+  } else {
+    return temperaturaFinal; // Continuar acumulando
+  }
+}, 0 );
+
+console.log( temperaturaPromedio2,"Hola" );
